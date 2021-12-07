@@ -1,0 +1,2 @@
+setono_sylius_webhook:
+    resource: "@SetonoSyliusWebhookPlugin/Resources/config/routes.yaml"
