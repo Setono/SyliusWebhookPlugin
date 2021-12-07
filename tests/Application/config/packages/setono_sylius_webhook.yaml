@@ -1,2 +1,2 @@
-setono_sylius_webhook:
-    option: Option value
+imports:
+    - { resource: "@SetonoSyliusWebhookPlugin/Resources/config/app/config.yaml" }

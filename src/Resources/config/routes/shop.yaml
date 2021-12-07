@@ -1,1 +1,5 @@
-# TODO Add your shop routes here
+setono_sylius_webhook_shop_handle_webhook_request:
+    path: /webhook
+    methods: [GET,POST]
+    defaults:
+        _controller: setono_sylius_webhook.controller.action.handle_webhook_request

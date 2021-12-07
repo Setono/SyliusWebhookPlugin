@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <mapped-superclass name="Setono\SyliusWebhookPlugin\Model\Webhook"
+                       table="setono_sylius_webhook__webhook">
+        <id name="id" type="string"/>
+
+        <field name="state" type="string" />
+        <field name="request" type="array" />
+    </mapped-superclass>
+</doctrine-mapping>
