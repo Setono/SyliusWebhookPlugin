@@ -1,12 +1,8 @@
 {
     "name": "setono/sylius-webhook-plugin",
-    "description": "Setono example plugin for Sylius.",
+    "description": "Handle webhooks in your Sylius store",
     "license": "MIT",
     "type": "sylius-plugin",
-    "keywords": [
-        "sylius",
-        "sylius-plugin"
-    ],
     "require": {
         "php": ">=7.4",
         "nyholm/psr7": "^1.4",
