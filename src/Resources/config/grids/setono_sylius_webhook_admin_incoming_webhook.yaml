@@ -4,6 +4,8 @@ sylius_grid:
             driver:
                 options:
                     class: "%setono_sylius_webhook.model.incoming_webhook.class%"
+            sorting:
+                receivedAt: desc
             limits: [100, 250, 500, 1000]
             fields:
                 id:
@@ -12,6 +14,11 @@ sylius_grid:
                 state:
                     type: string
                     label: setono_sylius_webhook.ui.state
+                    sortable: ~
+                error:
+                    type: string
+                    label: setono_sylius_webhook.ui.error
                 receivedAt:
                     type: datetime
                     label: setono_sylius_webhook.ui.received_at
+                    sortable: ~

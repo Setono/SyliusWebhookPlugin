@@ -10,6 +10,7 @@
 
         <field name="state" type="string"/>
         <field name="request" type="array"/>
+        <field name="error" type="text" nullable="true"/>
         <field name="receivedAt" type="datetime"/>
     </mapped-superclass>
 </doctrine-mapping>

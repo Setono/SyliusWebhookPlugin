@@ -40,10 +40,12 @@ final class IncomingWebhookRequest
         Assert::string($slug);
 
         $content = $request->getContent();
+        /** @psalm-suppress DocblockTypeContradiction */
         if (!is_string($content)) {
             $content = null;
         }
 
+        /** @psalm-suppress MixedArgumentTypeCoercion,InvalidArgument */
         return new self($slug, $content, $request->query, $request->request, $request->headers, $request->attributes);
     }
 }

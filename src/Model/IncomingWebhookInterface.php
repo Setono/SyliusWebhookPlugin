@@ -26,9 +26,13 @@ interface IncomingWebhookInterface extends ResourceInterface
     public function getRequest(): ?IncomingWebhookRequest;
 
     /**
-     * @param IncomingWebhookRequest|Request $request
+     * @param IncomingWebhookRequest|Request|mixed $request
      */
     public function setRequest($request): void;
+
+    public function getError(): ?string;
+
+    public function setError(?string $error): void;
 
     public function getReceivedAt(): DateTimeInterface;
 }

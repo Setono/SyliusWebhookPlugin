@@ -5,6 +5,7 @@
         <service id="setono_sylius_webhook.message.handler.incoming_webhook_received"
                  class="Setono\SyliusWebhookPlugin\Message\Handler\IncomingWebhookReceivedHandler">
             <argument type="service" id="setono_sylius_webhook.repository.incoming_webhook"/>
+            <argument type="service" id="setono_sylius_webhook.processor.composite_incoming_webhook"/>
 
             <tag name="messenger.message_handler"/>
         </service>

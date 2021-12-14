@@ -19,6 +19,8 @@ class IncomingWebhook implements IncomingWebhookInterface
 
     protected ?IncomingWebhookRequest $request = null;
 
+    protected ?string $error = null;
+
     protected DateTimeInterface $receivedAt;
 
     public function __construct()
@@ -65,6 +67,16 @@ class IncomingWebhook implements IncomingWebhookInterface
         Assert::isInstanceOf($request, IncomingWebhookRequest::class);
 
         $this->request = $request;
+    }
+
+    public function getError(): ?string
+    {
+        return $this->error;
+    }
+
+    public function setError(?string $error): void
+    {
+        $this->error = $error;
     }
 
     public function getReceivedAt(): DateTimeInterface

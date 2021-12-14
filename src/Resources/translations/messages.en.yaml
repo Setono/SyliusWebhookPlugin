@@ -10,6 +10,7 @@ setono_sylius_webhook:
         endpoints: Endpoints
         endpoint_header: Endpoints
         endpoint_subheader: Manage your webhook endpoints
+        error: Error
         incoming_webhooks: Incoming webhooks
         incoming_webhook_header: Incoming webhooks
         incoming_webhook_subheader: See all your incoming webhook requests
