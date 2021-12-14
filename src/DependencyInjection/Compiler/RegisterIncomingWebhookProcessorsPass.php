@@ -18,6 +18,7 @@ final class RegisterIncomingWebhookProcessorsPass implements CompilerPassInterfa
 
         $compositeProcessor = $container->getDefinition('setono_sylius_webhook.processor.composite_incoming_webhook');
 
+        /** @var string $id */
         foreach (array_keys($container->findTaggedServiceIds('setono_sylius_webhook.incoming_webhook_processor')) as $id) {
             $compositeProcessor->addMethodCall('add', [new Reference($id)]);
         }

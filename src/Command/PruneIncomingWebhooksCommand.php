@@ -15,6 +15,7 @@ final class PruneIncomingWebhooksCommand extends Command
 {
     protected static $defaultName = 'setono:sylius-webhook:prune-incoming-webhooks';
 
+    /** @psalm-suppress MissingPropertyType */
     protected static $defaultDescription = 'Prune the table with incoming webhook requests';
 
     private IncomingWebhookRepositoryInterface $incomingWebhookRepository;
