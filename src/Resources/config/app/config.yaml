@@ -1,3 +1,6 @@
+imports:
+    - { resource: "@SetonoSyliusWebhookPlugin/Resources/config/grids/setono_sylius_webhook_admin_incoming_webhook.yaml" }
+
 framework:
     messenger:
         buses:

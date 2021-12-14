@@ -1,0 +1,14 @@
+sylius_grid:
+    grids:
+        setono_sylius_webhook_admin_incoming_webhook:
+            driver:
+                options:
+                    class: "%setono_sylius_webhook.model.incoming_webhook.class%"
+            limits: [100, 250, 500, 1000]
+            fields:
+                id:
+                    type: string
+                    label: sylius.ui.id
+                state:
+                    type: string
+                    label: setono_sylius_webhook.ui.state

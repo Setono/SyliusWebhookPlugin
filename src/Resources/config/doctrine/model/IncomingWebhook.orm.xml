@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
-    <mapped-superclass name="Setono\SyliusWebhookPlugin\Model\Webhook"
-                       table="setono_sylius_webhook__webhook">
+    <mapped-superclass name="Setono\SyliusWebhookPlugin\Model\IncomingWebhook"
+                       table="setono_sylius_webhook__incoming_webhook">
         <id name="id" type="string"/>
 
         <field name="state" type="string" />

@@ -1,1 +1,13 @@
-# TODO Add your admin routes here
+setono_sylius_webhook_admin_incoming_webhook:
+    resource: |
+        section: admin
+        alias: setono_sylius_webhook.incoming_webhook
+        templates: "@SyliusAdmin\\Crud"
+        redirect: update
+        permission: true
+        grid: setono_sylius_webhook_admin_incoming_webhook
+        vars:
+            all:
+                header: setono_sylius_webhook.ui.incoming_webhook_header
+                subheader: setono_sylius_webhook.ui.incoming_webhook_subheader
+    type: sylius.resource

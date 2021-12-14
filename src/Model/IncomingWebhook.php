@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Component\Uid\Uuid;
 use Webmozart\Assert\Assert;
 
-class Webhook implements WebhookInterface
+class IncomingWebhook implements IncomingWebhookInterface
 {
     protected string $id;
 

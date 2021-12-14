@@ -7,7 +7,7 @@ namespace Setono\SyliusWebhookPlugin\Model;
 use Psr\Http\Message\ServerRequestInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface WebhookInterface extends ResourceInterface
+interface IncomingWebhookInterface extends ResourceInterface
 {
     public const STATE_PENDING = 'pending';
 

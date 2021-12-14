@@ -2,10 +2,10 @@
 <container xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://symfony.com/schema/dic/services"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="setono_sylius_webhook.custom_factory.webhook"
-                 class="Setono\SyliusWebhookPlugin\Factory\WebhookFactory"
-                 decorates="setono_sylius_webhook.factory.webhook" decoration-priority="64">
-            <argument type="service" id="setono_sylius_webhook.custom_factory.webhook.inner"/>
+        <service id="setono_sylius_webhook.custom_factory.incoming_webhook"
+                 class="Setono\SyliusWebhookPlugin\Factory\IncomingWebhookFactory"
+                 decorates="setono_sylius_webhook.factory.incoming_webhook" decoration-priority="64">
+            <argument type="service" id="setono_sylius_webhook.custom_factory.incoming_webhook.inner"/>
         </service>
     </services>
 </container>

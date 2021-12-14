@@ -7,4 +7,4 @@ setono_sylius_webhook_shop:
 
 setono_sylius_webhook_admin:
     resource: "@SetonoSyliusWebhookPlugin/Resources/config/routes/admin.yaml"
-    prefix: /admin
+    prefix: /admin/webhooks

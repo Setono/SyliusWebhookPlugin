@@ -1,0 +1,11 @@
+setono_sylius_webhook:
+    menu:
+        admin:
+            main:
+                webhooks:
+                    header: Webhooks
+                    incoming_webhooks: Incoming Webhooks
+    ui:
+        incoming_webhooks: Incoming webhooks
+        incoming_webhook_header: Incoming webhooks
+        incoming_webhook_subheader: See all your incoming webhook requests

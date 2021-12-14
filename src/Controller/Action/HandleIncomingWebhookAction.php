@@ -7,30 +7,30 @@ namespace Setono\SyliusWebhookPlugin\Controller\Action;
 use Doctrine\Persistence\ManagerRegistry;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Setono\DoctrineObjectManagerTrait\ORM\ORMManagerTrait;
-use Setono\SyliusWebhookPlugin\Event\PrePersistWebhookEvent;
-use Setono\SyliusWebhookPlugin\Factory\WebhookFactoryInterface;
-use Setono\SyliusWebhookPlugin\Message\Event\WebhookReceived;
+use Setono\SyliusWebhookPlugin\Event\PrePersistIncomingWebhookEvent;
+use Setono\SyliusWebhookPlugin\Factory\IncomingWebhookFactoryInterface;
+use Setono\SyliusWebhookPlugin\Message\Event\IncomingWebhookReceived;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 
-final class HandleWebhookRequestAction
+final class HandleIncomingWebhookAction
 {
     use ORMManagerTrait;
 
-    private WebhookFactoryInterface $webhookFactory;
+    private IncomingWebhookFactoryInterface $incomingWebhookFactory;
 
     private MessageBusInterface $eventBus;
 
     private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
-        WebhookFactoryInterface $webhookFactory,
+        IncomingWebhookFactoryInterface $incomingWebhookFactory,
         MessageBusInterface $eventBus,
         ManagerRegistry $managerRegistry,
         EventDispatcherInterface $eventDispatcher
     ) {
-        $this->webhookFactory = $webhookFactory;
+        $this->incomingWebhookFactory = $incomingWebhookFactory;
         $this->eventBus = $eventBus;
         $this->managerRegistry = $managerRegistry;
         $this->eventDispatcher = $eventDispatcher;
@@ -38,14 +38,14 @@ final class HandleWebhookRequestAction
 
     public function __invoke(Request $request): Response
     {
-        $webhook = $this->webhookFactory->createFromRequest($request);
-        $this->eventDispatcher->dispatch(new PrePersistWebhookEvent($webhook));
+        $incomingWebhook = $this->incomingWebhookFactory->createFromRequest($request);
+        $this->eventDispatcher->dispatch(new PrePersistIncomingWebhookEvent($incomingWebhook));
 
-        $manager = $this->getManager($webhook);
-        $manager->persist($webhook);
+        $manager = $this->getManager($incomingWebhook);
+        $manager->persist($incomingWebhook);
         $manager->flush();
 
-        $this->eventBus->dispatch(new WebhookReceived($webhook));
+        $this->eventBus->dispatch(new IncomingWebhookReceived($incomingWebhook));
 
         return new Response();
     }
