@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusWebhookPlugin\DependencyInjection;
 
 use Setono\SyliusWebhookPlugin\Doctrine\ORM\EndpointRepository;
+use Setono\SyliusWebhookPlugin\Doctrine\ORM\IncomingWebhookRepository;
 use Setono\SyliusWebhookPlugin\Model\Endpoint;
 use Setono\SyliusWebhookPlugin\Model\IncomingWebhook;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
@@ -32,6 +33,12 @@ final class Configuration implements ConfigurationInterface
             ->children()
                 ->scalarNode('driver')
                     ->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)
+                ->end()
+                ->integerNode('prune_delay')
+                    ->defaultValue(1440) // 24 hours
+                    ->info('The number of minutes to wait before incoming webhooks are removed from the table')
+                    ->example(5)
+                ->end()
         ;
 
         $this->addResourcesSection($rootNode);
@@ -74,7 +81,7 @@ final class Configuration implements ConfigurationInterface
                                     ->children()
                                         ->scalarNode('model')->defaultValue(IncomingWebhook::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('repository')->cannotBeEmpty()->end()
+                                        ->scalarNode('repository')->defaultValue(IncomingWebhookRepository::class)->cannotBeEmpty()->end()
                                         ->scalarNode('form')->defaultValue(DefaultResourceType::class)->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->end()
                                     ->end()
