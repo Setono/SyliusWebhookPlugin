@@ -5,6 +5,7 @@
         <defaults public="true"/>
         <service id="setono_sylius_webhook.controller.action.handle_incoming_webhook"
                  class="Setono\SyliusWebhookPlugin\Controller\Action\HandleIncomingWebhookAction">
+            <argument type="service" id="setono_sylius_webhook.repository.endpoint"/>
             <argument type="service" id="setono_sylius_webhook.factory.incoming_webhook"/>
             <argument type="service" id="setono_sylius_webhook.event_bus"/>
             <argument type="service" id="doctrine"/>

@@ -6,6 +6,7 @@
                  class="Setono\SyliusWebhookPlugin\Factory\IncomingWebhookFactory"
                  decorates="setono_sylius_webhook.factory.incoming_webhook" decoration-priority="64">
             <argument type="service" id="setono_sylius_webhook.custom_factory.incoming_webhook.inner"/>
+            <argument type="service" id="serializer"/>
         </service>
     </services>
 </container>

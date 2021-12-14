@@ -10,13 +10,17 @@ use Setono\DoctrineObjectManagerTrait\ORM\ORMManagerTrait;
 use Setono\SyliusWebhookPlugin\Event\PrePersistIncomingWebhookEvent;
 use Setono\SyliusWebhookPlugin\Factory\IncomingWebhookFactoryInterface;
 use Setono\SyliusWebhookPlugin\Message\Event\IncomingWebhookReceived;
+use Setono\SyliusWebhookPlugin\Repository\EndpointRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 final class HandleIncomingWebhookAction
 {
     use ORMManagerTrait;
+
+    private EndpointRepositoryInterface $endpointRepository;
 
     private IncomingWebhookFactoryInterface $incomingWebhookFactory;
 
@@ -25,19 +29,31 @@ final class HandleIncomingWebhookAction
     private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
+        EndpointRepositoryInterface $endpointRepository,
         IncomingWebhookFactoryInterface $incomingWebhookFactory,
         MessageBusInterface $eventBus,
         ManagerRegistry $managerRegistry,
         EventDispatcherInterface $eventDispatcher
     ) {
+        $this->endpointRepository = $endpointRepository;
         $this->incomingWebhookFactory = $incomingWebhookFactory;
         $this->eventBus = $eventBus;
         $this->managerRegistry = $managerRegistry;
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, string $slug): Response
     {
+        $endpoint = $this->endpointRepository->findOneBySlug($slug);
+        if (null === $endpoint) {
+            throw new NotFoundHttpException(sprintf('The endpoint with slug "%s" does not exist', $slug));
+        }
+
+        $token = $request->query->get('token');
+        if (!is_string($token) || $endpoint->getToken() !== $token) {
+            throw new NotFoundHttpException('Wrong token supplied');
+        }
+
         $incomingWebhook = $this->incomingWebhookFactory->createFromRequest($request);
         $this->eventDispatcher->dispatch(new PrePersistIncomingWebhookEvent($incomingWebhook));
 

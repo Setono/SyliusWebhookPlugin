@@ -12,3 +12,6 @@ sylius_grid:
                 state:
                     type: string
                     label: setono_sylius_webhook.ui.state
+                receivedAt:
+                    type: datetime
+                    label: setono_sylius_webhook.ui.received_at

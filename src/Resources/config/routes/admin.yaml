@@ -1,3 +1,17 @@
+setono_sylius_webhook_admin_endpoint:
+    resource: |
+        section: admin
+        alias: setono_sylius_webhook.endpoint
+        templates: "@SyliusAdmin\\Crud"
+        redirect: update
+        permission: true
+        grid: setono_sylius_webhook_admin_endpoint
+        vars:
+            all:
+                header: setono_sylius_webhook.ui.endpoint_header
+                subheader: setono_sylius_webhook.ui.endpoint_subheader
+    type: sylius.resource
+    
 setono_sylius_webhook_admin_incoming_webhook:
     resource: |
         section: admin

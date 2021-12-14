@@ -1,4 +1,5 @@
 imports:
+    - { resource: "@SetonoSyliusWebhookPlugin/Resources/config/grids/setono_sylius_webhook_admin_endpoint.yaml" }
     - { resource: "@SetonoSyliusWebhookPlugin/Resources/config/grids/setono_sylius_webhook_admin_incoming_webhook.yaml" }
 
 framework:

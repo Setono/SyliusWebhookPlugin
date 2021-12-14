@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Setono\SyliusWebhookPlugin\Model;
 
-use Psr\Http\Message\ServerRequestInterface;
+use DateTimeInterface;
+use Setono\SyliusWebhookPlugin\Request\IncomingWebhookRequest;
 use Sylius\Component\Resource\Model\ResourceInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 interface IncomingWebhookInterface extends ResourceInterface
 {
@@ -21,7 +23,12 @@ interface IncomingWebhookInterface extends ResourceInterface
 
     public function setState(string $state): void;
 
-    public function getRequest(): ?ServerRequestInterface;
+    public function getRequest(): ?IncomingWebhookRequest;
 
-    public function setRequest(ServerRequestInterface $request): void;
+    /**
+     * @param IncomingWebhookRequest|Request $request
+     */
+    public function setRequest($request): void;
+
+    public function getReceivedAt(): DateTimeInterface;
 }

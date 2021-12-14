@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+<doctrine-mapping xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <mapped-superclass name="Setono\SyliusWebhookPlugin\Model\IncomingWebhook"
                        table="setono_sylius_webhook__incoming_webhook">
         <id name="id" type="string"/>
 
-        <field name="state" type="string" />
-        <field name="request" type="array" />
+        <field name="state" type="string"/>
+        <field name="request" type="array"/>
+        <field name="receivedAt" type="datetime"/>
     </mapped-superclass>
 </doctrine-mapping>

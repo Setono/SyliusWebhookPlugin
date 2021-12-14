@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Setono\SyliusWebhookPlugin\Factory;
 
-use Nyholm\Psr7\Factory\Psr17Factory;
 use Setono\SyliusWebhookPlugin\Model\IncomingWebhookInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
 use Symfony\Component\HttpFoundation\Request;
 
 final class IncomingWebhookFactory implements IncomingWebhookFactoryInterface
@@ -29,11 +27,8 @@ final class IncomingWebhookFactory implements IncomingWebhookFactoryInterface
 
     public function createFromRequest(Request $request): IncomingWebhookInterface
     {
-        $psr17Factory = new Psr17Factory();
-        $psrHttpFactory = new PsrHttpFactory($psr17Factory, $psr17Factory, $psr17Factory, $psr17Factory);
-
         $obj = $this->createNew();
-        $obj->setRequest($psrHttpFactory->createRequest($request));
+        $obj->setRequest($request);
 
         return $obj;
     }

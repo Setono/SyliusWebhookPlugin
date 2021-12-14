@@ -1,0 +1,27 @@
+sylius_grid:
+    grids:
+        setono_sylius_webhook_admin_endpoint:
+            driver:
+                options:
+                    class: "%setono_sylius_webhook.model.endpoint.class%"
+            limits: [100, 250, 500, 1000]
+            fields:
+                name:
+                    type: string
+                    label: setono_sylius_webhook.ui.name
+            filters:
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [ name, slug ]
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+

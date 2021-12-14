@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Setono\SyliusWebhookPlugin\DependencyInjection;
 
+use Setono\SyliusWebhookPlugin\Doctrine\ORM\EndpointRepository;
+use Setono\SyliusWebhookPlugin\Model\Endpoint;
 use Setono\SyliusWebhookPlugin\Model\IncomingWebhook;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\Form\Type\DefaultResourceType;
@@ -47,6 +49,22 @@ final class Configuration implements ConfigurationInterface
                 ->arrayNode('resources')
                     ->addDefaultsIfNotSet()
                     ->children()
+                        ->arrayNode('endpoint')
+                            ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode('options')->end()
+                                ->arrayNode('classes')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('model')->defaultValue(Endpoint::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('repository')->defaultValue(EndpointRepository::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(DefaultResourceType::class)->end()
+                                        ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                    ->end()
+                                ->end()
+                            ->end()
+                        ->end()
                         ->arrayNode('incoming_webhook')
                             ->addDefaultsIfNotSet()
                             ->children()

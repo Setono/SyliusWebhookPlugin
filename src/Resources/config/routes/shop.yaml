@@ -1,5 +1,7 @@
 setono_sylius_webhook_shop_handle_webhook_request:
-    path: /webhook
+    path: /webhooks/{slug}
     methods: [GET,POST]
     defaults:
-        _controller: setono_sylius_webhook.controller.action.handle_webhook_request
+        _controller: setono_sylius_webhook.controller.action.handle_incoming_webhook
+    requirements:
+        slug: '[a-zA-Z0-9-_]+'

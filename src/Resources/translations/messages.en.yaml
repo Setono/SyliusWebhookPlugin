@@ -3,9 +3,15 @@ setono_sylius_webhook:
         admin:
             main:
                 webhooks:
+                    endpoints: Endpoints
                     header: Webhooks
                     incoming_webhooks: Incoming Webhooks
     ui:
+        endpoints: Endpoints
+        endpoint_header: Endpoints
+        endpoint_subheader: Manage your webhook endpoints
         incoming_webhooks: Incoming webhooks
         incoming_webhook_header: Incoming webhooks
         incoming_webhook_subheader: See all your incoming webhook requests
+        received_at: Received at
+        state: State
