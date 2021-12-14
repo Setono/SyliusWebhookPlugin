@@ -18,7 +18,7 @@ final class AdminMenuBuilder
                 'route' => 'setono_sylius_webhook_admin_incoming_webhook_index',
             ])
             ->setLabel('setono_sylius_webhook.menu.admin.main.webhooks.incoming_webhooks')
-            ->setLabelAttribute('icon', 'columns')
+            ->setLabelAttribute('icon', 'recycle')
         ;
     }
 
