@@ -12,5 +12,9 @@
         <field name="request" type="array"/>
         <field name="error" type="text" nullable="true"/>
         <field name="receivedAt" type="datetime"/>
+
+        <many-to-one target-entity="Setono\SyliusWebhookPlugin\Model\EndpointInterface" field="endpoint">
+            <join-column name="endpoint_id" referenced-column-name="id" nullable="true" on-delete="SET NULL" />
+        </many-to-one>
     </mapped-superclass>
 </doctrine-mapping>

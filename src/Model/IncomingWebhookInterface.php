@@ -35,4 +35,8 @@ interface IncomingWebhookInterface extends ResourceInterface
     public function setError(?string $error): void;
 
     public function getReceivedAt(): DateTimeInterface;
+
+    public function getEndpoint(): ?EndpointInterface;
+
+    public function setEndpoint(?EndpointInterface $endpoint): void;
 }

@@ -55,6 +55,7 @@ final class HandleIncomingWebhookAction
         }
 
         $incomingWebhook = $this->incomingWebhookFactory->createFromRequest($request);
+        $incomingWebhook->setEndpoint($endpoint);
         $this->eventDispatcher->dispatch(new PrePersistIncomingWebhookEvent($incomingWebhook));
 
         $manager = $this->getManager($incomingWebhook);

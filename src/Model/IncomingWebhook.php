@@ -23,6 +23,8 @@ class IncomingWebhook implements IncomingWebhookInterface
 
     protected DateTimeInterface $receivedAt;
 
+    protected ?EndpointInterface $endpoint = null;
+
     public function __construct()
     {
         $this->id = (string) Uuid::v4();
@@ -82,5 +84,15 @@ class IncomingWebhook implements IncomingWebhookInterface
     public function getReceivedAt(): DateTimeInterface
     {
         return $this->receivedAt;
+    }
+
+    public function getEndpoint(): ?EndpointInterface
+    {
+        return $this->endpoint;
+    }
+
+    public function setEndpoint(?EndpointInterface $endpoint): void
+    {
+        $this->endpoint = $endpoint;
     }
 }
