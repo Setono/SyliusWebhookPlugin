@@ -6,9 +6,18 @@ sylius_grid:
                     class: "%setono_sylius_webhook.model.endpoint.class%"
             limits: [100, 250, 500, 1000]
             fields:
+                code:
+                    type: string
+                    label: setono_sylius_webhook.ui.code
                 name:
                     type: string
                     label: setono_sylius_webhook.ui.name
+                url:
+                    type: twig
+                    label: setono_sylius_webhook.ui.url
+                    path: .
+                    options:
+                        template: "@SetonoSyliusWebhookPlugin/admin/grid/field/endpoint_url.html.twig"
             filters:
                 search:
                     type: string
