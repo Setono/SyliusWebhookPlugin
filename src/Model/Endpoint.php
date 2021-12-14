@@ -10,9 +10,9 @@ class Endpoint implements EndpointInterface
 {
     protected ?int $id = null;
 
-    protected ?string $name = null;
+    protected ?string $code = null;
 
-    protected ?string $slug = null;
+    protected ?string $name = null;
 
     protected string $token;
 
@@ -26,6 +26,16 @@ class Endpoint implements EndpointInterface
         return $this->id;
     }
 
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(?string $code): void
+    {
+        $this->code = $code;
+    }
+
     public function getName(): ?string
     {
         return $this->name;
@@ -34,16 +44,6 @@ class Endpoint implements EndpointInterface
     public function setName(?string $name): void
     {
         $this->name = $name;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(?string $slug): void
-    {
-        $this->slug = $slug;
     }
 
     public function getToken(): string

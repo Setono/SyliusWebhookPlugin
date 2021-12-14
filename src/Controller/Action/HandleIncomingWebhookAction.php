@@ -42,11 +42,11 @@ final class HandleIncomingWebhookAction
         $this->eventDispatcher = $eventDispatcher;
     }
 
-    public function __invoke(Request $request, string $slug): Response
+    public function __invoke(Request $request, string $code): Response
     {
-        $endpoint = $this->endpointRepository->findOneBySlug($slug);
+        $endpoint = $this->endpointRepository->findOneByCode($code);
         if (null === $endpoint) {
-            throw new NotFoundHttpException(sprintf('The endpoint with slug "%s" does not exist', $slug));
+            throw new NotFoundHttpException(sprintf('The endpoint with code "%s" does not exist', $code));
         }
 
         $token = $request->query->get('token');

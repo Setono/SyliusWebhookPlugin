@@ -11,10 +11,10 @@ use Webmozart\Assert\Assert;
 
 class EndpointRepository extends EntityRepository implements EndpointRepositoryInterface
 {
-    public function findOneBySlug(string $slug): ?EndpointInterface
+    public function findOneByCode(string $code): ?EndpointInterface
     {
         $endpoint = $this->findOneBy([
-            'slug' => $slug,
+            'code' => $code,
         ]);
         Assert::nullOrIsInstanceOf($endpoint, EndpointInterface::class);
 

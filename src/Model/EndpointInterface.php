@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Setono\SyliusWebhookPlugin\Model;
 
+use Sylius\Component\Resource\Model\CodeAwareInterface;
 use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\SlugAwareInterface;
 
-interface EndpointInterface extends ResourceInterface, SlugAwareInterface
+interface EndpointInterface extends ResourceInterface, CodeAwareInterface
 {
     public function getId(): ?int;
 

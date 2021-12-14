@@ -12,21 +12,27 @@ use Webmozart\Assert\Assert;
 
 final class IncomingWebhookRequest
 {
-    public string $slug;
+    public string $code;
 
     public ?string $content;
 
-    public InputBag $query;
+    public ParameterBag $query;
 
-    public InputBag $request;
+    public ParameterBag $request;
 
     public HeaderBag $headers;
 
     public ParameterBag $attributes;
 
-    public function __construct(string $slug, ?string $content, InputBag $query, InputBag $request, HeaderBag $headers, ParameterBag $attributes)
-    {
-        $this->slug = $slug;
+    public function __construct(
+        string $code,
+        ?string $content,
+        ParameterBag $query,
+        ParameterBag $request,
+        HeaderBag $headers,
+        ParameterBag $attributes
+    ) {
+        $this->code = $code;
         $this->content = $content;
         $this->query = $query;
         $this->request = $request;
@@ -36,16 +42,17 @@ final class IncomingWebhookRequest
 
     public static function createFromRequest(Request $request): self
     {
-        $slug = $request->attributes->get('slug');
-        Assert::string($slug);
+        $code = $request->attributes->get('code');
+        Assert::string($code);
 
         $content = $request->getContent();
+
         /** @psalm-suppress DocblockTypeContradiction */
         if (!is_string($content)) {
             $content = null;
         }
 
         /** @psalm-suppress MixedArgumentTypeCoercion,InvalidArgument */
-        return new self($slug, $content, $request->query, $request->request, $request->headers, $request->attributes);
+        return new self($code, $content, $request->query, $request->request, $request->headers, $request->attributes);
     }
 }

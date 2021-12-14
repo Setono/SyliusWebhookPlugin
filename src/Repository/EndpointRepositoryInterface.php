@@ -9,5 +9,5 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface EndpointRepositoryInterface extends RepositoryInterface
 {
-    public function findOneBySlug(string $slug): ?EndpointInterface;
+    public function findOneByCode(string $code): ?EndpointInterface;
 }

@@ -7,12 +7,12 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <field name="code" column="code" type="string" />
         <field name="name" type="string" />
-        <field name="slug" column="slug" type="string" />
         <field name="token" type="string" />
 
         <unique-constraints>
-            <unique-constraint columns="slug"/>
+            <unique-constraint columns="code"/>
         </unique-constraints>
     </mapped-superclass>
 </doctrine-mapping>
