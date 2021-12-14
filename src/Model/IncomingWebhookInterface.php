@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Setono\SyliusWebhookPlugin\Model;
 
 use DateTimeInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Setono\SyliusWebhookPlugin\Request\ServerRequest;
 use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface IncomingWebhookInterface extends ResourceInterface
@@ -22,9 +22,9 @@ interface IncomingWebhookInterface extends ResourceInterface
 
     public function setState(string $state): void;
 
-    public function getRequest(): ?ServerRequestInterface;
+    public function getRequest(): ?ServerRequest;
 
-    public function setRequest(ServerRequestInterface $request): void;
+    public function setRequest(ServerRequest $request): void;
 
     public function getError(): ?string;
 

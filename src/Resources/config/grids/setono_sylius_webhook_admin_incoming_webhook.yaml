@@ -11,6 +11,9 @@ sylius_grid:
                 id:
                     type: string
                     label: sylius.ui.id
+                endpoint:
+                    type: string
+                    label: setono_sylius_webhook.ui.endpoint
                 state:
                     type: string
                     label: setono_sylius_webhook.ui.state
@@ -22,3 +25,8 @@ sylius_grid:
                     type: datetime
                     label: setono_sylius_webhook.ui.received_at
                     sortable: ~
+            actions:
+                item:
+                    show:
+                        type: show
+                        label: sylius.ui.show

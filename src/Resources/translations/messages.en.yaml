@@ -8,6 +8,7 @@ setono_sylius_webhook:
                     incoming_webhooks: Incoming Webhooks
     ui:
         code: Code
+        endpoint: Endpoint
         endpoints: Endpoints
         endpoint_header: Endpoints
         endpoint_subheader: Manage your webhook endpoints
@@ -17,5 +18,6 @@ setono_sylius_webhook:
         incoming_webhook_subheader: See all your incoming webhook requests
         name: Name
         received_at: Received at
+        show_incoming_webhook: Show incoming webhook
         state: State
         url: URL

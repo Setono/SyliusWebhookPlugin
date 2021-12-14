@@ -9,6 +9,8 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface EndpointInterface extends ResourceInterface, CodeAwareInterface
 {
+    public function __toString(): string;
+
     public function getId(): ?int;
 
     public function getName(): ?string;

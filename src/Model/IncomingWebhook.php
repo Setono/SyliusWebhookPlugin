@@ -6,7 +6,7 @@ namespace Setono\SyliusWebhookPlugin\Model;
 
 use DateTimeImmutable;
 use DateTimeInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Setono\SyliusWebhookPlugin\Request\ServerRequest;
 use Symfony\Component\Uid\Uuid;
 use Webmozart\Assert\Assert;
 
@@ -16,7 +16,7 @@ class IncomingWebhook implements IncomingWebhookInterface
 
     protected string $state = self::STATE_PENDING;
 
-    protected ?ServerRequestInterface $request = null;
+    protected ?ServerRequest $request = null;
 
     protected ?string $error = null;
 
@@ -54,12 +54,12 @@ class IncomingWebhook implements IncomingWebhookInterface
         $this->state = $state;
     }
 
-    public function getRequest(): ?ServerRequestInterface
+    public function getRequest(): ?ServerRequest
     {
         return $this->request;
     }
 
-    public function setRequest(ServerRequestInterface $request): void
+    public function setRequest(ServerRequest $request): void
     {
         $this->request = $request;
     }

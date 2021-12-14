@@ -21,6 +21,11 @@ class Endpoint implements EndpointInterface
         $this->token = (string) Uuid::v4();
     }
 
+    public function __toString(): string
+    {
+        return (string) $this->getName();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

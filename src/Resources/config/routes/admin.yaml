@@ -25,3 +25,13 @@ setono_sylius_webhook_admin_incoming_webhook:
                 header: setono_sylius_webhook.ui.incoming_webhook_header
                 subheader: setono_sylius_webhook.ui.incoming_webhook_subheader
     type: sylius.resource
+    
+setono_sylius_webhook_admin_incoming_webhook_show:
+    path: /incoming-webhooks/{id}
+    methods: [GET]
+    defaults:
+        _controller: setono_sylius_webhook.controller.incoming_webhook:showAction
+        _sylius:
+            section: admin
+            permission: true
+            template: "@SetonoSyliusWebhookPlugin/admin/incoming_webhook/show.html.twig"
