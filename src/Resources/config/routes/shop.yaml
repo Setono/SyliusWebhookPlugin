@@ -1,4 +1,4 @@
-setono_sylius_webhook_shop_handle_webhook_request:
+setono_sylius_webhook_shop_handle_incoming_webhook_request:
     path: /webhooks/{code}
     methods: [GET,POST]
     defaults:

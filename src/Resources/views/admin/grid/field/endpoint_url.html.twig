@@ -1,5 +1,5 @@
 {# @var \Setono\SyliusWebhookPlugin\Model\EndpointInterface data #}
 
-{% set url = url('setono_sylius_webhook_shop_handle_webhook_request', {'code': data.code, 'token': data.token}) %}
+{% set url = url('setono_sylius_webhook_shop_handle_incoming_webhook_request', {'code': data.code, 'token': data.token}) %}
 
 <a href="{{ url }}" target="_blank">{{ url }}</a>
