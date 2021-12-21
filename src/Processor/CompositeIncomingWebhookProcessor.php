@@ -26,7 +26,12 @@ final class CompositeIncomingWebhookProcessor implements IncomingWebhookProcesso
 
         foreach ($this->processors as $processor) {
             if ($processor->supports($incomingWebhook)) {
-                $processor->process($incomingWebhook);
+                try {
+                    $processor->process($incomingWebhook);
+                } catch (\Throwable $e) {
+                    $incomingWebhook->setState(IncomingWebhookInterface::STATE_FAILED);
+                    $incomingWebhook->setError($e->getMessage());
+                }
 
                 $manager->flush();
 
