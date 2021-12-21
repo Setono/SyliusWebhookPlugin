@@ -18,6 +18,7 @@ setono_sylius_webhook:
         incoming_webhook_subheader: See all your incoming webhook requests
         name: Name
         received_at: Received at
+        request: Request
         show_incoming_webhook: Show incoming webhook
         state: State
         url: URL

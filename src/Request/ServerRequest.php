@@ -45,6 +45,11 @@ final class ServerRequest
         $this->attributes = $attributes;
     }
 
+    public function __toString(): string
+    {
+        return print_r($this, true);
+    }
+
     /**
      * This method is more or less copied from here: https://github.com/symfony/psr-http-message-bridge/blob/main/Factory/PsrHttpFactory.php
      */

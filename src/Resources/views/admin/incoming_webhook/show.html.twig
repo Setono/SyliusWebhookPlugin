@@ -1,7 +1,45 @@
+{# @var resource \Setono\SyliusWebhookPlugin\Model\IncomingWebhookInterface #}
 {% extends '@SyliusAdmin/layout.html.twig' %}
 
 {% block title %}{{ 'setono_sylius_webhook.ui.show_incoming_webhook'|trans }} | {{ resource.id }}{% endblock %}
 
 {% block content %}
-    test
+    <div id="header" class="ui stackable two column grid">
+        <div class="column">
+            <h1 class="ui header">
+                <i class="circular cube icon"></i>
+                <div class="content">
+                    <span>{{ resource.endpoint }}: {{ resource.id }}</span>
+                    <div class="sub header">{{ 'setono_sylius_webhook.ui.received_at'|trans }}: {{ resource.receivedAt|date }}</div>
+                </div>
+            </h1>
+        </div>
+    </div>
+
+
+    <table class="ui very basic celled table">
+        <tbody>
+        <tr>
+            <td class="five wide"><strong class="gray text">{{ 'setono_sylius_webhook.ui.received_at'|trans }}</strong></td>
+            <td>{{ resource.receivedAt|date }}</td>
+        </tr>
+        <tr>
+            <td class="five wide"><strong class="gray text">{{ 'setono_sylius_webhook.ui.endpoint'|trans }}</strong></td>
+            <td>{{ resource.endpoint }}</td>
+        </tr>
+        <tr>
+            <td class="five wide"><strong class="gray text">{{ 'setono_sylius_webhook.ui.state'|trans }}</strong></td>
+            <td>{{ resource.state }}</td>
+        </tr>
+        {% if resource.error is not null %}
+            <tr>
+                <td class="five wide"><strong class="gray text">{{ 'setono_sylius_webhook.ui.error'|trans }}</strong></td>
+                <td>{{ resource.error }}</td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <h4 class="ui large header">{{ 'setono_sylius_webhook.ui.request'|trans }}</h4>
+    <pre style="overflow-x: auto">{{ resource.request }}</pre>
 {% endblock %}
