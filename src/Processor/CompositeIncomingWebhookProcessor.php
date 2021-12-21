@@ -28,6 +28,7 @@ final class CompositeIncomingWebhookProcessor implements IncomingWebhookProcesso
             if ($processor->supports($incomingWebhook)) {
                 try {
                     $processor->process($incomingWebhook);
+                    $incomingWebhook->setState(IncomingWebhookInterface::STATE_HANDLED);
                 } catch (\Throwable $e) {
                     $incomingWebhook->setState(IncomingWebhookInterface::STATE_FAILED);
                     $incomingWebhook->setError($e->getMessage());
