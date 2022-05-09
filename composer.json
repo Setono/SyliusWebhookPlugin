@@ -5,7 +5,7 @@
     "type": "sylius-plugin",
     "require": {
         "php": ">=7.4",
-        "doctrine/persistence": "^2.3.0",
+        "doctrine/persistence": "^2.5.3",
         "knplabs/knp-menu": "^3.3",
         "psr/event-dispatcher": "^1.0",
         "setono/doctrine-object-manager-trait": "^1.0",
