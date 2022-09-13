@@ -62,7 +62,7 @@ final class HandleIncomingWebhookAction
         $manager->persist($incomingWebhook);
         $manager->flush();
 
-        $this->eventBus->dispatch(new IncomingWebhookReceived($incomingWebhook));
+        $this->eventBus->dispatch(new IncomingWebhookReceived($incomingWebhook->getId()));
 
         return new Response();
     }
