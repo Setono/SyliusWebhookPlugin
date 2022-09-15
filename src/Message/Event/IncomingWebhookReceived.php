@@ -12,17 +12,17 @@ final class IncomingWebhookReceived implements EventInterface
     private string $incomingWebhookId;
 
     /**
-     * @param mixed|string|IncomingWebhookInterface $incomingWebhook
+     * @param string|IncomingWebhookInterface $incomingWebhookId
      */
-    public function __construct($incomingWebhook)
+    public function __construct($incomingWebhookId)
     {
-        if ($incomingWebhook instanceof IncomingWebhookInterface) {
-            $incomingWebhook = $incomingWebhook->getId();
+        if ($incomingWebhookId instanceof IncomingWebhookInterface) {
+            $incomingWebhookId = $incomingWebhookId->getId();
         }
 
-        Assert::string($incomingWebhook);
+        Assert::string($incomingWebhookId);
 
-        $this->incomingWebhookId = $incomingWebhook;
+        $this->incomingWebhookId = $incomingWebhookId;
     }
 
     public function getIncomingWebhookId(): string
