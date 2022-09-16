@@ -15,7 +15,7 @@ final class PruneIncomingWebhooksCommand extends Command
 {
     protected static $defaultName = 'setono:sylius-webhook:prune-incoming-webhooks';
 
-    /** @psalm-suppress MissingPropertyType */
+    /** @var string|null */
     protected static $defaultDescription = 'Prune the table with incoming webhook requests';
 
     private IncomingWebhookRepositoryInterface $incomingWebhookRepository;
@@ -51,6 +51,8 @@ final class PruneIncomingWebhooksCommand extends Command
         Assert::greaterThanEq($threshold, 0);
 
         $olderThan = (new \DateTimeImmutable())->sub(new \DateInterval(sprintf('PT%dM', (int) $threshold)));
+        Assert::notFalse($olderThan);
+
         $this->incomingWebhookRepository->prune($olderThan);
 
         return 0;
